@@ -22,8 +22,8 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.nvegas.common.theme.AppTheme
-import com.nvegas.common.R as CR
+import com.nvegas.core.theme.AppTheme
+import com.nvegas.core.R as CR
 import com.nvegas.splash.presentation.R as PR
 
 @Composable

@@ -17,7 +17,7 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
+    implementation(project(":common:core"))
     implementation(project(":signIn:domain"))
 
     implementation(libs.bundles.dagger.hilt.compose)
@@ -29,7 +29,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
 
-  
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

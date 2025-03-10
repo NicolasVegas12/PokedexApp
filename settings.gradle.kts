@@ -22,7 +22,6 @@ dependencyResolutionManagement {
 rootProject.name = "PokemonInterviewApp"
 include(":app")
 include(":navigation")
-include(":common")
 include(":splash:presentation")
 include(":home:presentation")
 include(":home:domain")
@@ -35,3 +34,5 @@ include(":signUp:domain")
 include(":signUp:data")
 include(":splash:domain")
 include(":splash:data")
+include(":common:data")
+include(":common:core")

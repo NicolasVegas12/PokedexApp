@@ -5,9 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nvegas.common.navigation.components.Navigator
-import com.nvegas.common.navigation.destinations.RootDestination
-import com.nvegas.common.states.GenericScreenState
+import com.nvegas.core.navigation.destinations.RootDestination
+import com.nvegas.core.navigation.components.Navigator
+import com.nvegas.core.states.GenericScreenState
 import com.nvegas.domain.models.request.SignInRequestModel
 import com.nvegas.domain.usecases.SignInUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

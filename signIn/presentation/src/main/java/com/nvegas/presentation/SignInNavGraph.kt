@@ -5,8 +5,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.nvegas.common.navigation.destinations.RootDestination
-import com.nvegas.common.navigation.destinations.SignInDestination
+import com.nvegas.core.navigation.destinations.RootDestination
+import com.nvegas.core.navigation.destinations.SignInDestination
 
 fun NavGraphBuilder.signInGraph() {
     navigation<RootDestination.SignInGraph>(

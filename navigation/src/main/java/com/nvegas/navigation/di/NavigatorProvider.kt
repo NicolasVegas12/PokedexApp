@@ -1,7 +1,7 @@
 package com.nvegas.navigation.di
 
-import com.nvegas.common.navigation.components.Navigator
-import com.nvegas.common.navigation.destinations.RootDestination
+import com.nvegas.core.navigation.components.Navigator
+import com.nvegas.core.navigation.destinations.RootDestination
 import com.nvegas.navigation.components.NavigatorImpl
 import dagger.Module
 import dagger.Provides
@@ -16,5 +16,6 @@ object NavigatorProvider {
 
     @Provides
     @Singleton
-    fun navigatorProvider(): Navigator = NavigatorImpl(initialDestination = RootDestination.SplashGraph)
+    fun navigatorProvider(): Navigator =
+        NavigatorImpl(initialDestination = RootDestination.SplashGraph)
 }

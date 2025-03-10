@@ -23,9 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.nvegas.common.navigation.destinations.Destination
-import com.nvegas.common.navigation.destinations.HomeDestination
-import com.nvegas.common.theme.AppTheme
+import com.nvegas.core.navigation.destinations.Destination
+import com.nvegas.core.navigation.destinations.HomeDestination
+import com.nvegas.core.theme.AppTheme
 import com.nvegas.navigation.ui.components.BottomNavItemsProvider.BOTTOM_NAV_ITEMS
 
 @Composable

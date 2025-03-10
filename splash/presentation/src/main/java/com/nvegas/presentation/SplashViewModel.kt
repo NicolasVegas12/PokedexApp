@@ -2,9 +2,9 @@ package com.nvegas.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nvegas.common.navigation.components.Navigator
-import com.nvegas.common.navigation.destinations.RootDestination
-import com.nvegas.common.states.GenericScreenState
+import com.nvegas.core.navigation.components.Navigator
+import com.nvegas.core.navigation.destinations.RootDestination
+import com.nvegas.core.states.GenericScreenState
 import com.nvegas.domain.usecases.GetAuthUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -35,9 +35,9 @@ class SplashViewModel @Inject constructor(
         try {
             val response = getAuthUserUseCase.invoke()
             delay(3000)
-            if(response){
+            if (response) {
                 navigateToHome()
-            }else{
+            } else {
                 navigateToAuth()
             }
         } catch (e: Exception) {
@@ -55,7 +55,8 @@ class SplashViewModel @Inject constructor(
             }
         })
     }
-    private suspend fun navigateToHome(){
+
+    private suspend fun navigateToHome() {
         navigator.updateStartDestination(RootDestination.HomeGraph)
         navigator.navigate(RootDestination.HomeGraph, navOptions = {
             popUpTo(navigator.startDestination) {

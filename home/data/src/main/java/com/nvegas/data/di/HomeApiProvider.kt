@@ -1,6 +1,6 @@
 package com.nvegas.data.di
 
-import com.nvegas.common.network.ApiBuilder
+import com.nvegas.core.network.ApiBuilder
 import com.nvegas.data.network.service.IPokedexService
 import dagger.Module
 import dagger.Provides

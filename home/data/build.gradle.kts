@@ -18,7 +18,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
+    implementation(project(":common:core"))
+    implementation(project(":common:data"))
     implementation(project(":home:domain"))
 
     implementation(libs.bundles.dagger.hilt.compose)

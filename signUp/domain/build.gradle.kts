@@ -14,9 +14,8 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
 
-
+    implementation(project(":common:core"))
     implementation(libs.bundles.dagger.hilt.compose)
 
     ksp(libs.bundles.dagger.hilt.compiler)

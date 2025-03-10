@@ -16,7 +16,7 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
+    implementation(project(":common:core"))
     implementation(project(":signIn:domain"))
 
     implementation(libs.bundles.android.compose.core)

@@ -40,7 +40,7 @@ android {
 dependencies {
 
     implementation(project(":navigation"))
-    implementation(project(":common"))
+    implementation(project(":common:core"))
 
     //firebase
     implementation(platform(libs.firebase.bom))

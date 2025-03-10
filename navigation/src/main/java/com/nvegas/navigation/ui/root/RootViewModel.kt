@@ -2,10 +2,10 @@ package com.nvegas.navigation.ui.root
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nvegas.common.navigation.components.Navigator
-import com.nvegas.common.navigation.destinations.Destination
-import com.nvegas.common.navigation.destinations.RootDestination
-import com.nvegas.common.navigation.components.NavigationAction
+import com.nvegas.core.navigation.components.NavigationAction
+import com.nvegas.core.navigation.components.Navigator
+import com.nvegas.core.navigation.destinations.Destination
+import com.nvegas.core.navigation.destinations.RootDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch

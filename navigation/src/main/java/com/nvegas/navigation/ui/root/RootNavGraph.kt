@@ -3,8 +3,8 @@ package com.nvegas.navigation.ui.root
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.nvegas.common.navigation.components.NavigationAction
-import com.nvegas.common.navigation.destinations.Destination
+import com.nvegas.core.navigation.components.NavigationAction
+import com.nvegas.core.navigation.destinations.Destination
 import com.nvegas.navigation.components.ObserveAsEvents
 import com.nvegas.presentation.homeGraph
 import com.nvegas.presentation.signInGraph
@@ -13,7 +13,7 @@ import com.nvegas.presentation.splashGraph
 import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun RootNavGraph(navController: NavHostController, startDestination:Destination, flow: Flow<NavigationAction>) {
+fun RootNavGraph(navController: NavHostController, startDestination: Destination, flow: Flow<NavigationAction>) {
     ObserveAsEvents(flow = flow) { action ->
         when (action) {
             is NavigationAction.Navigate -> navController.navigate(

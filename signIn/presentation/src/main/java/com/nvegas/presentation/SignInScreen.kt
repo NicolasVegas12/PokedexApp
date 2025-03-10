@@ -30,13 +30,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.nvegas.common.theme.AppTheme
-import com.nvegas.common.ui.buttons.ButtonComponent
-import com.nvegas.common.ui.buttons.CheckBoxButtonComponent
-import com.nvegas.common.ui.dialogs.ErrorDialogComponent
-import com.nvegas.common.ui.dialogs.LoadingDialogComponent
-import com.nvegas.common.ui.inputs.TextInputComponent
-import com.nvegas.common.ui.text.TextComponent
+import com.nvegas.core.theme.AppTheme
+import com.nvegas.core.ui.buttons.ButtonComponent
+import com.nvegas.core.ui.buttons.CheckBoxButtonComponent
+import com.nvegas.core.ui.dialogs.ErrorDialogComponent
+import com.nvegas.core.ui.dialogs.LoadingDialogComponent
+import com.nvegas.core.ui.inputs.TextInputComponent
+import com.nvegas.core.ui.text.TextComponent
 import com.nvegas.domain.models.request.SignInRequestModel
 
 @Composable

@@ -17,7 +17,7 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
+    implementation(project(":common:core"))
     //Splash
     implementation(project(":splash:data"))
     implementation(project(":splash:presentation"))

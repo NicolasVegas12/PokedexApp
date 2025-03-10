@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.nvegas.common.theme.AppTheme
+import com.nvegas.core.theme.AppTheme
 import com.nvegas.navigation.ui.components.BottomNavItemsProvider.BOTTOM_NAV_ITEMS
 import com.nvegas.navigation.ui.components.BottomNavigationBar
 

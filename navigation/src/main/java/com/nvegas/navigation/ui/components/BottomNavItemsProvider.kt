@@ -1,6 +1,6 @@
 package com.nvegas.navigation.ui.components
 
-import com.nvegas.common.navigation.destinations.HomeDestination
+import com.nvegas.core.navigation.destinations.HomeDestination
 import com.nvegas.navigation.R
 
 object BottomNavItemsProvider {

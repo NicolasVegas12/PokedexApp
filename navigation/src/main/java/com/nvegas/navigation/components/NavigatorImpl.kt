@@ -2,9 +2,9 @@ package com.nvegas.navigation.components
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.navigation.NavOptionsBuilder
-import com.nvegas.common.navigation.components.NavigationAction
-import com.nvegas.common.navigation.components.Navigator
-import com.nvegas.common.navigation.destinations.Destination
+import com.nvegas.core.navigation.components.NavigationAction
+import com.nvegas.core.navigation.components.Navigator
+import com.nvegas.core.navigation.destinations.Destination
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 

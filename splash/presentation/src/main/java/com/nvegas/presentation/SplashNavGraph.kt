@@ -6,8 +6,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.nvegas.common.navigation.destinations.RootDestination
-import com.nvegas.common.navigation.destinations.SplashDestination
+import com.nvegas.core.navigation.destinations.RootDestination
+import com.nvegas.core.navigation.destinations.SplashDestination
 
 fun NavGraphBuilder.splashGraph() {
     navigation<RootDestination.SplashGraph>(
