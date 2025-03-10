@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709874593312",
+    "project_id": "pokedexapp-78740",
+    "storage_bucket": "pokedexapp-78740.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709874593312:android:53d1ac8c0a6fad8d729645",
+        "android_client_info": {
+          "package_name": "com.nvegas.pokemoninterviewapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh7MduL5IWJPJEdrddHJVvlrQxvz6M72s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

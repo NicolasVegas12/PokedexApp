@@ -15,10 +15,15 @@ fun NavGraphBuilder.signInGraph() {
         composable<SignInDestination.SignInRoute> {
             val viewModel = hiltViewModel<SignInViewModel>()
             val request by viewModel.currentRequest
+            val state by viewModel.state
+
+
             SignInScreen(
                 request = request,
+                signInState = state,
                 setRequest = viewModel::setRequest,
                 signIn = viewModel::signIn,
+                resetState = viewModel::resetState,
                 navigateToSignUp = viewModel::navigateToSignUp
             )
         }
