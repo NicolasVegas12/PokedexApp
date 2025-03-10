@@ -10,6 +10,10 @@ plugins {
 
     id("org.sonarqube") version "6.0.1.5171"
 
+    libs.plugins.android.google.services.get().let {
+        id(it.pluginId) version it.version.displayName apply false
+    }
+
     libs.plugins.androidx.ksp.get().let {
         id(it.pluginId) version it.version.displayName apply false
     }

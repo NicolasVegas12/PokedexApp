@@ -1,5 +1,6 @@
 package com.nvegas.navigation.ui.components
 
+import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
@@ -22,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nvegas.common.navigation.destinations.Destination
 import com.nvegas.common.navigation.destinations.HomeDestination
-import com.nvegas.common.theme.PokemonInterviewAppTheme
+import com.nvegas.common.theme.AppTheme
 import com.nvegas.navigation.ui.components.BottomNavItemsProvider.BOTTOM_NAV_ITEMS
 
 @Composable
@@ -91,10 +92,11 @@ fun RowScope.AddItem(
 
 }
 
-@Preview(name = "BottomNavigationBar")
+@Preview(name = "BottomNavigationBar", apiLevel = 30)
+@Preview(name = "BottomNavigationBar", apiLevel = 30, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun PreviewBottomNavigationBar() {
-    PokemonInterviewAppTheme {
+    AppTheme {
         BottomNavigationBar(HomeDestination.HomePrincipalRoute::class.qualifiedName, {}, true)
     }
 }

@@ -4,14 +4,17 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.nvegas.common.navigation.components.NavigationAction
+import com.nvegas.common.navigation.destinations.Destination
 import com.nvegas.navigation.components.ObserveAsEvents
 import com.nvegas.presentation.homeGraph
 import com.nvegas.presentation.signInGraph
+import com.nvegas.presentation.signUpGraph
 import com.nvegas.presentation.splashGraph
+import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun RootNavGraph(navController: NavHostController, viewModel: RootViewModel) {
-    ObserveAsEvents(flow = viewModel.navigationActions) { action ->
+fun RootNavGraph(navController: NavHostController, startDestination:Destination, flow: Flow<NavigationAction>) {
+    ObserveAsEvents(flow = flow) { action ->
         when (action) {
             is NavigationAction.Navigate -> navController.navigate(
                 action.destination
@@ -28,10 +31,11 @@ fun RootNavGraph(navController: NavHostController, viewModel: RootViewModel) {
     }
     NavHost(
         navController = navController,
-        startDestination = viewModel.startDestination,
+        startDestination = startDestination,
     ) {
         splashGraph()
         homeGraph()
         signInGraph()
+        signUpGraph()
     }
 }

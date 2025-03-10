@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.nvegas.common.navigation.components.Navigator
 import com.nvegas.common.navigation.destinations.RootDestination
 import com.nvegas.common.states.GenericScreenState
+import com.nvegas.domain.usecases.GetAuthUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +19,7 @@ typealias SplashRedirectState = GenericScreenState<Boolean>
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val navigator: Navigator,
+    private val getAuthUserUseCase: GetAuthUserUseCase
 ) : ViewModel() {
 
     private val _splashRedirectScreenState = MutableStateFlow(SplashRedirectState())
@@ -31,8 +33,13 @@ class SplashViewModel @Inject constructor(
     private suspend fun loadData() {
         _splashRedirectScreenState.value = SplashRedirectState(isLoading = true)
         try {
+            val response = getAuthUserUseCase.invoke()
             delay(3000)
-            navigateToAuth()
+            if(response){
+                navigateToHome()
+            }else{
+                navigateToAuth()
+            }
         } catch (e: Exception) {
             _splashRedirectScreenState.value = SplashRedirectState(error = e.message.toString())
 
@@ -41,6 +48,14 @@ class SplashViewModel @Inject constructor(
     }
 
     private suspend fun navigateToAuth() {
+        navigator.updateStartDestination(RootDestination.SignInGraph)
+        navigator.navigate(RootDestination.SignInGraph, navOptions = {
+            popUpTo(navigator.startDestination) {
+                inclusive = false
+            }
+        })
+    }
+    private suspend fun navigateToHome(){
         navigator.updateStartDestination(RootDestination.HomeGraph)
         navigator.navigate(RootDestination.HomeGraph, navOptions = {
             popUpTo(navigator.startDestination) {

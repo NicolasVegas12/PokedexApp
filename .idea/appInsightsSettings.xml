@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.nvegas.pokemoninterviewapp" />
+                  <option name="mobileSdkAppId" value="1:709874593312:android:53d1ac8c0a6fad8d729645" />
+                  <option name="projectId" value="pokedexapp-78740" />
+                  <option name="projectNumber" value="709874593312" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

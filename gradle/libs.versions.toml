@@ -30,6 +30,15 @@ serializationCollections = "0.3.5"
 serialization = "1.7.3"
 serializationConverter = "1.0.0"
 
+googleService = "4.4.2"
+firebaseBom = "33.10.0"
+uiTextGoogleFonts = "1.7.8"
+
+datastore = "1.0.0"
+protobufJava = "3.21.11"
+protobufKotlin = "3.21.2"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,7 +55,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-compose-constraint-layout = {group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintLayoutCompose"}
+androidx-compose-constraint-layout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintLayoutCompose" }
 androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-icons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "extendedIcons" }
 androidx-material = { group = "androidx.compose.material", name = "material" }
@@ -64,10 +73,23 @@ retrofit-pom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.re
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
-serialization-collections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable" ,version.ref ="serializationCollections"}
-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json" , version.ref ="serialization"}
-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core" , version.ref ="serialization"}
-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter" , version.ref ="serializationConverter"}
+serialization-collections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "serializationCollections" }
+serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "serialization" }
+serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "serializationConverter" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+
+
+
+android-data-store = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
+
+android-protobuf-java = {group = "com.google.protobuf",name = "protobuf-javalite", version.ref = "protobufJava" }
+android-protobuf-kotlin = {group    = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobufKotlin"}
+
+
 
 
 [plugins]
@@ -76,16 +98,19 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-serialization = { id = "plugin.serialization", version.ref = "kotlin" }
-androidx-ksp = {id = "com.google.devtools.ksp", version.ref = "ksp"}
+androidx-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+android-google-services = { id = "com.google.gms.google-services", version.ref = "googleService" }
 
 
 
 [bundles]
-android-compose-core = ["androidx-material3", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-core-ktx"]
-android-compose-extensions = ["androidx-compose-constraint-layout","androidx-compose-navigation", "androidx-icons", "androidx-material", "androidx-lottie"]
+android-compose-core = ["androidx-material3", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-core-ktx", "androidx-ui-tooling"]
+android-compose-extensions = ["androidx-compose-constraint-layout", "androidx-compose-navigation", "androidx-icons", "androidx-material", "androidx-lottie", "androidx-ui-text-google-fonts", ]
 dagger-hilt-compose = ["dagger-hilt-core", "dagger-hilt-navigation"]
-dagger-hilt-compiler = ["dagger-hilt-compiler","androidx-hilt-compiler"]
+dagger-hilt-compiler = ["dagger-hilt-compiler", "androidx-hilt-compiler"]
 serialization = ["serialization-collections", "serialization-converter", "serialization-core", "serialization-json"]
 
 retrofit = ["retrofit-core", "retrofit-loging-interceptor", "retrofit-okhttp"]
+
+protobuf = ["android-protobuf-java", "android-protobuf-kotlin"]

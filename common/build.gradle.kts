@@ -5,6 +5,7 @@ plugins {
     kotlin(libs.plugins.jetbrains.kotlin.serialization.get().pluginId)
     id(libs.plugins.dagger.hilt.get().pluginId)
     id(libs.plugins.androidx.ksp.get().pluginId)
+    
     id("org.sonarqube")
     `android-config`
 }

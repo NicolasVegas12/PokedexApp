@@ -13,4 +13,6 @@ sealed class RootDestination : Destination {
     @Serializable
     data object SignInGraph : RootDestination()
 
+    @Serializable
+    data object SignUpGraph : RootDestination()
 }

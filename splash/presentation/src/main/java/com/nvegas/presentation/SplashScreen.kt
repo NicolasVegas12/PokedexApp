@@ -22,6 +22,7 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.nvegas.common.theme.AppTheme
 import com.nvegas.common.R as CR
 import com.nvegas.splash.presentation.R as PR
 
@@ -62,5 +63,7 @@ fun SplashScreen() {
 @Preview(name = "NightMode", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun PreviewSplashScreen() {
-    SplashScreen()
+    AppTheme {
+        SplashScreen()
+    }
 }

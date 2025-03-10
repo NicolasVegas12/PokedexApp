@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.nvegas.common.theme.AppTheme
 import com.nvegas.navigation.ui.components.BottomNavItemsProvider.BOTTOM_NAV_ITEMS
 import com.nvegas.navigation.ui.components.BottomNavigationBar
 
@@ -33,12 +34,15 @@ fun RootScreen() {
         }
     ) { paddingValue ->
 
-        Box(modifier = Modifier
-            .safeDrawingPadding()
-            .padding(paddingValue)) {
+        Box(
+            modifier = Modifier
+                .safeDrawingPadding()
+                .padding(paddingValue)
+        ) {
             RootNavGraph(
                 navController = navController,
-                viewModel = viewModel
+                startDestination = viewModel.startDestination,
+                flow = viewModel.navigationActions,
             )
         }
     }
@@ -47,5 +51,7 @@ fun RootScreen() {
 @Preview(name = "RootScreen")
 @Composable
 private fun PreviewRootScreen() {
-    RootScreen()
+    AppTheme {
+        RootScreen()
+    }
 }

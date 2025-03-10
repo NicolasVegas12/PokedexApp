@@ -26,6 +26,11 @@ dependencies {
 
     implementation(libs.bundles.serialization)
 
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.android.data.store)
+    implementation(libs.bundles.protobuf)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

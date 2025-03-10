@@ -19,6 +19,7 @@ dependencies {
 
     implementation(project(":common"))
     //Splash
+    implementation(project(":splash:data"))
     implementation(project(":splash:presentation"))
     //Home Module
     implementation(project(":home:presentation"))
@@ -27,6 +28,10 @@ dependencies {
     //Sign In Module
     implementation(project(":signIn:presentation"))
     implementation(project(":signIn:data"))
+
+    //Sign In Module
+    implementation(project(":signUp:presentation"))
+    implementation(project(":signUp:data"))
 
     implementation(libs.bundles.android.compose.core)
     implementation(libs.bundles.android.compose.extensions)
