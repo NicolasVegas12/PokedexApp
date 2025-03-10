@@ -1,27 +1,24 @@
 package com.nvegas.navigation.ui.components
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Explore
-import androidx.compose.material.icons.outlined.PeopleOutline
-import androidx.compose.material.icons.outlined.Person
 import com.nvegas.common.navigation.destinations.HomeDestination
+import com.nvegas.navigation.R
 
 object BottomNavItemsProvider {
     val BOTTOM_NAV_ITEMS = listOf(
         BottomNavItem(
             name = "Explorar",
-            icon = Icons.Outlined.Explore,
+            icon = R.drawable.baseline_search_24,
             route = HomeDestination.HomePrincipalRoute,
         ),
         BottomNavItem(
             name = "Equipo",
-            icon = Icons.Outlined.PeopleOutline,
+            icon = R.drawable.ic_pokeball,
             route = HomeDestination.HomePokemonTeamRoute,
         ),
 
         BottomNavItem(
             name = "Perfil",
-            icon = Icons.Outlined.Person,
+            icon = R.drawable.baseline_person_outline_24,
             route = HomeDestination.HomeProfileRoute,
         ),
     )
