@@ -4,4 +4,5 @@ import com.nvegas.domain.models.request.SignInRequestModel
 
 interface SignInRepository {
     suspend fun signIn(request: SignInRequestModel): Boolean
+    suspend fun signOut():Boolean
 }

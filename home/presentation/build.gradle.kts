@@ -21,6 +21,7 @@ dependencies {
 
     implementation(project(":home:domain"))
 
+    implementation(project(":signIn:domain"))
 
     implementation(libs.bundles.android.compose.core)
     implementation(libs.bundles.android.compose.extensions)

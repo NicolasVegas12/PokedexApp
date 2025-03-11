@@ -1,7 +1,6 @@
 package com.nvegas.presentation.explore.components.items
 
 import android.content.res.Configuration
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -22,16 +21,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.nvegas.core.theme.AppTheme
-import com.nvegas.core.ui.images.AsyncImageComponent
 import com.nvegas.core.ui.text.TextComponent
 import com.nvegas.domain.models.list.PokedexListResultModel
 
 @Composable
 fun PokemonListItem(
     item: PokedexListResultModel,
-    onCLick:()->Unit
+    onCLick: () -> Unit
 ) {
-    Log.d("PokemonListItem", "Item: $item")
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(20.dp))
@@ -69,6 +66,6 @@ private fun PreviewPokemonListItem() {
             PokedexListResultModel(
                 name = "Bulbasaur"
             )
-        ){}
+        ) {}
     }
 }

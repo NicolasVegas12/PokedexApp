@@ -12,6 +12,7 @@ import com.nvegas.core.navigation.destinations.RootDestination
 import com.nvegas.presentation.explore.HomeExploreScreen
 import com.nvegas.presentation.explore.HomeExploreViewModel
 import com.nvegas.presentation.profile.HomeProfileScreen
+import com.nvegas.presentation.profile.HomeProfileViewModel
 import com.nvegas.presentation.team.HomeTeamScreen
 
 fun NavGraphBuilder.homeGraph() {
@@ -34,8 +35,8 @@ fun NavGraphBuilder.homeGraph() {
         }
 
         composable<HomeDestination.HomeProfileRoute> {
-
-            HomeProfileScreen()
+            val viewModel = hiltViewModel<HomeProfileViewModel>()
+            HomeProfileScreen(viewModel::signOut)
         }
 
 

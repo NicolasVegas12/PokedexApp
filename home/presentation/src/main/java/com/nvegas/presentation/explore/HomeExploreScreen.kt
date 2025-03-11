@@ -55,6 +55,7 @@ fun HomeExploreScreen(
     val detailState = rememberModalBottomSheetState()
     var isSearchActive by remember { mutableStateOf(false) }
 
+
     Column(modifier = Modifier.fillMaxSize()) {
 
         AnimatedVisibility(!connectivity, modifier = Modifier.padding(16.dp)) {
@@ -103,18 +104,38 @@ fun HomeExploreScreen(
                     }
                 } else {
 
-                    items(pokedex.itemCount) {
-                        pokedex[it]?.let {
-                            PokemonListItem(it) {
-                                selectedItem = it
-                                detailVisibility = true
+                    val isSearching = searchQuery.isNotEmpty()
+                    val filteredList = if (isSearching) {
+                        pokedex.itemSnapshotList.items.filter { it.name.contains(searchQuery, ignoreCase = true) }
+                    } else {
+                        emptyList() // Se usa la paginación normal
+                    }
+
+                    if (!isSearching) { // Si NO estamos buscando, sigue la paginación normal
+                        items(pokedex.itemCount) {
+                            pokedex[it]?.let { item ->
+                                PokemonListItem(item) {
+                                    selectedItem = item
+                                    detailVisibility = true
+                                }
                             }
                         }
 
-                    }
-                    if (pokedex.loadState.append is LoadState.Loading) {
-                        item {
-                            PokedexLoadingItem(80.dp, 80.dp)
+                        if (pokedex.loadState.append is LoadState.Loading) {
+                            item { PokedexLoadingItem(80.dp, 80.dp) }
+                        }
+                    } else { // Si hay búsqueda, solo mostrar elementos ya cargados
+                        if (filteredList.isNotEmpty()) {
+                            items(filteredList.size) { index ->
+                                filteredList[index].let { item ->
+                                    PokemonListItem(item) {
+                                        selectedItem = item
+                                        detailVisibility = true
+                                    }
+                                }
+                            }
+                        } else {
+                            item { TextComponent("No se encontraron resultados.") }
                         }
                     }
 

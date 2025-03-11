@@ -16,4 +16,14 @@ class SignInRepositoryImpl @Inject constructor() : SignInRepository {
                     coroutine.resume(task.isSuccessful)
                 }
         }
+
+    override suspend fun signOut(): Boolean {
+        try {
+            Firebase.auth.signOut()
+            return true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return false
+        }
+    }
 }
