@@ -28,10 +28,10 @@ Para ejecutar la aplicación localmente, sigue estos pasos:
 4. Compila y ejecuta la aplicación.
 
 
-## Dependencias Principales
-   Jetpack Compose: Interfaz de usuario declarativa.
-   Retrofit: Consumo de APIs REST.
-   Firebase Authentication: Autenticación de usuarios.
-   Room Database: Almacenamiento de datos local.
-   Hilt/Dagger: Inyección de dependencias.
-   Navigation Component: Gestión de navegación entre pantallas.
+## 📦 Dependencias Principales
+- Jetpack Compose: Interfaz de usuario declarativa.
+- Retrofit: Consumo de APIs REST.
+- Firebase Authentication: Autenticación de usuarios.
+- Room Database: Almacenamiento de datos local.
+- Hilt/Dagger: Inyección de dependencias.
+- Navigation Component: Gestión de navegación entre pantallas.
