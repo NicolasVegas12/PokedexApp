@@ -3,16 +3,19 @@ package com.nvegas.data.mappers
 import com.nvegas.data.database.entity.PokemonAbilityEntity
 import com.nvegas.data.database.entity.PokemonEntity
 import com.nvegas.data.database.entity.PokemonMoveEntity
+import com.nvegas.data.database.entity.PokemonTypeEntity
 import com.nvegas.data.network.dto.response.detail.PokemonAbilityResponse
 import com.nvegas.data.network.dto.response.detail.PokemonDetailResponse
 import com.nvegas.data.network.dto.response.detail.PokemonMoveResponse
 import com.nvegas.data.network.dto.response.detail.PokemonSpritesResponse
+import com.nvegas.data.network.dto.response.detail.PokemonTypeResponse
 import com.nvegas.data.network.dto.response.list.PokedexListPagerResponse
 import com.nvegas.data.network.dto.response.list.PokedexListResultResponse
 import com.nvegas.domain.models.detail.PokemonAbilityModel
 import com.nvegas.domain.models.detail.PokemonDetailModel
 import com.nvegas.domain.models.detail.PokemonMoveModel
 import com.nvegas.domain.models.detail.PokemonSpritesModel
+import com.nvegas.domain.models.detail.PokemonTypeModel
 import com.nvegas.domain.models.list.PokedexListPagerModel
 import com.nvegas.domain.models.list.PokedexListResultModel
 
@@ -39,7 +42,8 @@ fun PokemonDetailResponse.toDomain() = PokemonDetailModel(
     weight = weight,
     sprites = sprites.toDomain(),
     abilities = abilities.map { it.toDomain() },
-    moves = moves.map { it.toDomain() }
+    moves = moves.map { it.toDomain() },
+    types = types.map { it.toDomain() }
 )
 
 fun PokemonSpritesResponse.toDomain() = PokemonSpritesModel(
@@ -63,6 +67,16 @@ fun PokemonMoveResponse.toDomain(): PokemonMoveModel {
         id = id.toInt(),
         name = move.name
 
+    )
+}
+
+fun PokemonTypeResponse.toDomain(): PokemonTypeModel {
+    val id = type.url.split("/".toRegex()).dropLast(1).last()
+    return PokemonTypeModel(
+        id = id.toInt(),
+        slot = slot,
+        name = type.name,
+        url = type.url
     )
 }
 
@@ -104,6 +118,17 @@ fun PokedexListResultModel.toMoveDatabase(): List<PokemonMoveEntity> {
     return moves
 }
 
+fun PokedexListResultModel.toTypeDatabase(): List<PokemonTypeEntity> {
+    val types = detail?.types?.map {
+        PokemonTypeEntity(
+            typeId = it.id,
+            slot = it.slot,
+            name = it.name,
+        )
+    } ?: emptyList()
+    return types
+}
+
 fun PokemonEntity.toDomain() = PokedexListResultModel(
     id = pokemonId,
     name = name,
@@ -127,7 +152,15 @@ fun PokemonAbilityEntity.toDomain() = PokemonAbilityModel(
     id = abilityId,
     name = name, isHidden = isHidden, slot = slot
 )
+
 fun PokemonMoveEntity.toDomain() = PokemonMoveModel(
     id = moveId,
     name = name
+)
+
+fun PokemonTypeEntity.toDomain() = PokemonTypeModel(
+    id = typeId,
+    name = name,
+    slot = slot,
+    url = url
 )

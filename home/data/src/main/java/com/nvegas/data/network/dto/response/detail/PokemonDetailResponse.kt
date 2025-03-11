@@ -10,5 +10,6 @@ data class PokemonDetailResponse(
     val weight: Int = 0,
     val sprites: PokemonSpritesResponse = PokemonSpritesResponse(),
     val abilities: List<PokemonAbilityResponse> = emptyList(),
-    val moves: List<PokemonMoveResponse> = emptyList()
+    val moves: List<PokemonMoveResponse> = emptyList(),
+    val types: List<PokemonTypeResponse> = emptyList()
 )

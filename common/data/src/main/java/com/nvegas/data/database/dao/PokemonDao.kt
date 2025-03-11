@@ -8,10 +8,13 @@ import androidx.room.Transaction
 import com.nvegas.data.database.entity.PokemonAbilityEntity
 import com.nvegas.data.database.entity.PokemonEntity
 import com.nvegas.data.database.entity.PokemonMoveEntity
+import com.nvegas.data.database.entity.PokemonTypeEntity
 import com.nvegas.data.database.entity.relations.PokemonAbilityCrosRef
 import com.nvegas.data.database.entity.relations.PokemonMoveCrosRef
+import com.nvegas.data.database.entity.relations.PokemonTypeCrosRef
 import com.nvegas.data.database.entity.relations.PokemonWithAbilities
 import com.nvegas.data.database.entity.relations.PokemonWithMoves
+import com.nvegas.data.database.entity.relations.PokemonWithTypes
 
 @Dao
 interface PokemonDao {
@@ -21,6 +24,12 @@ interface PokemonDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAbility(pokemon: PokemonAbilityEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertType(pokemon: PokemonTypeEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPokemonWithTypes(crossRef: PokemonTypeCrosRef)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMove(pokemon: PokemonMoveEntity)
@@ -44,5 +53,10 @@ interface PokemonDao {
     @Transaction
     @Query("SELECT * FROM PokemonEntity where pokemonId = :pokemonId")
     suspend fun getPokemonWithMoves(pokemonId: Int): PokemonWithMoves
+
+    @Transaction
+    @Query("SELECT * FROM PokemonEntity where pokemonId = :pokemonId")
+    suspend fun getPokemonWithTypes(pokemonId: Int): PokemonWithTypes
+
 
 }

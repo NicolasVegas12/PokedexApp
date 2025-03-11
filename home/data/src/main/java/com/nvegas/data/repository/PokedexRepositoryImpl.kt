@@ -3,10 +3,12 @@ package com.nvegas.data.repository
 import com.nvegas.data.database.dao.PokemonDao
 import com.nvegas.data.database.entity.relations.PokemonAbilityCrosRef
 import com.nvegas.data.database.entity.relations.PokemonMoveCrosRef
+import com.nvegas.data.database.entity.relations.PokemonTypeCrosRef
 import com.nvegas.data.mappers.toAbilityDatabase
 import com.nvegas.data.mappers.toDatabase
 import com.nvegas.data.mappers.toDomain
 import com.nvegas.data.mappers.toMoveDatabase
+import com.nvegas.data.mappers.toTypeDatabase
 import com.nvegas.data.network.service.PokedexService
 import com.nvegas.domain.models.detail.PokemonDetailModel
 import com.nvegas.domain.models.list.PokedexListPagerModel
@@ -29,6 +31,7 @@ class PokedexRepositoryImpl @Inject constructor(
         val formatedPokemon = pokemon.toDatabase()
         val abilities = pokemon.toAbilityDatabase()
         val moves = pokemon.toMoveDatabase()
+        val types = pokemon.toTypeDatabase()
         pokemonDao.insertPokemon(formatedPokemon)
         abilities.map {
             pokemonDao.insertAbility(it)
@@ -49,6 +52,17 @@ class PokedexRepositoryImpl @Inject constructor(
                 )
             )
         }
+        types.map {
+            pokemonDao.insertType(it)
+            pokemonDao.insertPokemonWithTypes(
+                PokemonTypeCrosRef(
+                    formatedPokemon.pokemonId,
+                    it.typeId
+                )
+            )
+        }
+
+
     }
 
     override suspend fun getPokemonCount(): Int = pokemonDao.pokemonCount()
@@ -58,11 +72,13 @@ class PokedexRepositoryImpl @Inject constructor(
         val newList = pokemons.map { poke ->
             val abilities = pokemonDao.getPokemonWithAbilities(poke.pokemonId)
             val moves = pokemonDao.getPokemonWithMoves(poke.pokemonId)
+            val types = pokemonDao.getPokemonWithTypes(poke.pokemonId)
             val pokemon = poke.toDomain()
             pokemon.copy(
                 detail = pokemon.detail?.copy(
                     abilities = abilities.abilities.map { it.toDomain() },
-                    moves = moves.moves.map { it.toDomain() }
+                    moves = moves.moves.map { it.toDomain() },
+                    types = types.types.map { it.toDomain() }
                 )
             )
         }

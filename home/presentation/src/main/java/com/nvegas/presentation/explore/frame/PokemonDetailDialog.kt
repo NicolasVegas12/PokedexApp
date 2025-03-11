@@ -59,6 +59,7 @@ fun PokemonDetailDialog(
             TextComponent("Height: ${item.detail?.height}")
             TextComponent("Weight: ${item.detail?.weight}")
             TextComponent("Abilities: ${item.detail?.abilities?.joinToString { it.name }}")
+            TextComponent("Types: ${item.detail?.types?.joinToString { it.name }}")
             TextComponent(
                 "Moves",
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
