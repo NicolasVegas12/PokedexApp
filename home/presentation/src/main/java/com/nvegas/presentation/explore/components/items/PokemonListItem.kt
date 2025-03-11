@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,30 +30,38 @@ fun PokemonListItem(
     item: PokedexListResultModel,
     onCLick: () -> Unit
 ) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(20.dp))
-            .border(1.dp, MaterialTheme.colorScheme.onBackground, shape = RoundedCornerShape(20.dp))
-            .background(MaterialTheme.colorScheme.surfaceContainerLowest)
-            .clickable { onCLick() }
-    ) {
-        Row(
-            Modifier
-                .padding(8.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+    key(item.id) {
+
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(20.dp))
+                .border(
+                    1.dp,
+                    MaterialTheme.colorScheme.onBackground,
+                    shape = RoundedCornerShape(20.dp)
+                )
+                .background(MaterialTheme.colorScheme.surfaceContainerLowest)
+                .clickable { onCLick() }
         ) {
-            AsyncImage(
-                item.detail?.sprites?.artWork ?: "",
-                null,
-                modifier = Modifier.size(96.dp)
-            )
-            TextComponent(
-                item.name,
-                modifier = Modifier.weight(1f),
-                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                alignment = TextAlign.Center
-            )
+
+            Row(
+                Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                AsyncImage(
+                    item.detail?.sprites?.artWork ?: "",
+                    null,
+                    modifier = Modifier.size(96.dp)
+                )
+                TextComponent(
+                    item.name,
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                    alignment = TextAlign.Center
+                )
+            }
         }
     }
 }
