@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -54,13 +56,22 @@ fun HomeExploreScreen(
 
     val detailState = rememberModalBottomSheetState()
     var isSearchActive by remember { mutableStateOf(false) }
+    val refreshing = pokedex?.loadState?.refresh is LoadState.Loading
+    val pullRefreshState = rememberPullRefreshState(
+        refreshing = refreshing,
+        onRefresh = { pokedex?.refresh() }
+    )
 
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .pullRefresh(pullRefreshState)) {
 
         AnimatedVisibility(!connectivity, modifier = Modifier.padding(16.dp)) {
             NoConnectivityItem()
         }
+
+
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.padding(16.dp)
@@ -106,12 +117,17 @@ fun HomeExploreScreen(
 
                     val isSearching = searchQuery.isNotEmpty()
                     val filteredList = if (isSearching) {
-                        pokedex.itemSnapshotList.items.filter { it.name.contains(searchQuery, ignoreCase = true) }
+                        pokedex.itemSnapshotList.items.filter {
+                            it.name.contains(
+                                searchQuery,
+                                ignoreCase = true
+                            )
+                        }
                     } else {
-                        emptyList() // Se usa la paginación normal
+                        emptyList()
                     }
 
-                    if (!isSearching) { // Si NO estamos buscando, sigue la paginación normal
+                    if (!isSearching) {
                         items(pokedex.itemCount) {
                             pokedex[it]?.let { item ->
                                 PokemonListItem(item) {
@@ -145,6 +161,7 @@ fun HomeExploreScreen(
                 }
             }
         }
+
     }
 
     AnimatedVisibility(detailVisibility) {

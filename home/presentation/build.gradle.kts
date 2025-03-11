@@ -23,6 +23,8 @@ dependencies {
 
     implementation(project(":signIn:domain"))
 
+    implementation(libs.google.swipe.refresh)
+
     implementation(libs.bundles.android.compose.core)
     implementation(libs.bundles.android.compose.extensions)
 

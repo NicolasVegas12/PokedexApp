@@ -1,6 +1,5 @@
 package com.nvegas.data.domain_impl.use_case
 
-import android.util.Log
 import com.nvegas.common.utils.IODispatcher
 import com.nvegas.data.repository.PokedexRepository
 import com.nvegas.data.repository.app.AppRepository
@@ -23,7 +22,7 @@ class GetPokedexListUseCaseImpl @Inject constructor(
             val connected = appRepository.isInternetAvailable().first()
             val pokemonCount = repository.getPokemonCount()
             val end = offset + limit
-            val response: PokedexListPagerModel = if (pokemonCount < end+1) {
+            val response: PokedexListPagerModel = if (pokemonCount < end + 1) {
                 if (connected) {
                     val list = repository.getPokedexListFromApi(offset, limit)
                     val newList: List<PokedexListResultModel> = list.results.map { result ->
@@ -35,17 +34,19 @@ class GetPokedexListUseCaseImpl @Inject constructor(
                     }
                     list.copy(results = newList)
                 } else {
+                    val list = repository.getPokemons(offset + 1, end)
+
                     PokedexListPagerModel(
                         count = pokemonCount,
                         next = null,
                         previous = "",
-                        results = emptyList()
+                        results = list
                     )
                 }
 
 
             } else {
-                val list = repository.getPokemons(offset+1, end )
+                val list = repository.getPokemons(offset + 1, end)
                 PokedexListPagerModel(
                     count = pokemonCount,
                     next = if (end == pokemonCount) null else "",
@@ -53,10 +54,7 @@ class GetPokedexListUseCaseImpl @Inject constructor(
                     results = list
                 )
             }
-            response.results.map {
 
-                Log.d("GetPokedexListUseCaseImpl", "invoke: $it")
-            }
             return@withContext response
         }
 }

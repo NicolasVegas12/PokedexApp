@@ -42,6 +42,7 @@ pagingRuntime = "3.3.6"
 pagingCompose = "3.3.6"
 coil = "2.4.0"
 room = "2.6.1"
+swipeRefresh = "0.31.1-alpha"
 
 
 [libraries]
@@ -96,11 +97,13 @@ android-protobuf-kotlin = { group = "com.google.protobuf", name = "protobuf-kotl
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagingRuntime" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
 
-io-coil = {group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+io-coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
-androidx-room-runtime = {group= "androidx.room", name = "room-runtime", version.ref = "room"}
-androidx-room-core = {group= "androidx.room", name = "room-ktx", version.ref = "room"}
-androidx-room-compiler = {group= "androidx.room", name = "room-compiler", version.ref = "room"}
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-core = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+google-swipe-refresh = {group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "swipeRefresh"}
 
 
 [plugins]
@@ -126,4 +129,4 @@ retrofit = ["retrofit-core", "retrofit-loging-interceptor", "retrofit-okhttp"]
 
 protobuf = ["android-protobuf-java", "android-protobuf-kotlin"]
 paging = ["androidx-paging-compose", "androidx-paging-runtime"]
-room = ["androidx-room-core","androidx-room-runtime"]
+room = ["androidx-room-core", "androidx-room-runtime"]
