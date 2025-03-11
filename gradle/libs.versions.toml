@@ -34,9 +34,13 @@ googleService = "4.4.2"
 firebaseBom = "33.10.0"
 uiTextGoogleFonts = "1.7.8"
 
-datastore = "1.0.0"
+datastore = "1.1.3"
 protobufJava = "3.21.11"
 protobufKotlin = "3.21.2"
+
+pagingRuntime = "3.3.6"
+pagingCompose = "3.3.6"
+coil = "2.4.0"
 
 
 
@@ -86,9 +90,13 @@ androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text
 
 android-data-store = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
 
-android-protobuf-java = {group = "com.google.protobuf",name = "protobuf-javalite", version.ref = "protobufJava" }
-android-protobuf-kotlin = {group    = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobufKotlin"}
+android-protobuf-java = { group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "protobufJava" }
+android-protobuf-kotlin = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobufKotlin" }
 
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagingRuntime" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
+
+io-coil = {group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
 
 
 
@@ -106,7 +114,7 @@ android-google-services = { id = "com.google.gms.google-services", version.ref =
 
 [bundles]
 android-compose-core = ["androidx-material3", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-core-ktx", "androidx-ui-tooling"]
-android-compose-extensions = ["androidx-compose-constraint-layout", "androidx-compose-navigation", "androidx-icons", "androidx-material", "androidx-lottie", "androidx-ui-text-google-fonts", ]
+android-compose-extensions = ["androidx-compose-constraint-layout", "androidx-compose-navigation", "androidx-icons", "androidx-material", "androidx-lottie", "androidx-ui-text-google-fonts", "io-coil"]
 dagger-hilt-compose = ["dagger-hilt-core", "dagger-hilt-navigation"]
 dagger-hilt-compiler = ["dagger-hilt-compiler", "androidx-hilt-compiler"]
 serialization = ["serialization-collections", "serialization-converter", "serialization-core", "serialization-json"]
@@ -114,3 +122,4 @@ serialization = ["serialization-collections", "serialization-converter", "serial
 retrofit = ["retrofit-core", "retrofit-loging-interceptor", "retrofit-okhttp"]
 
 protobuf = ["android-protobuf-java", "android-protobuf-kotlin"]
+paging = ["androidx-paging-compose", "androidx-paging-runtime"]

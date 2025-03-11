@@ -6,6 +6,7 @@ import com.nvegas.data.network.dto.response.list.PokedexListPagerResponse
 import retrofit2.Response
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface IPokedexService {
@@ -18,6 +19,6 @@ interface IPokedexService {
 
     @GET(DataConfigurationContract.API_V2 + DataConfigurationContract.POKEMON_DETAIL)
     suspend fun getPokemonDetail(
-        @Query("pokemonId") pokemonId: Int
+        @Path("pokemonId") pokemonId: Int
     ):Response<PokemonDetailResponse>
 }

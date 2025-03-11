@@ -27,6 +27,7 @@ dependencies {
     ksp(libs.bundles.dagger.hilt.compiler)
 
     implementation(libs.bundles.serialization)
+    implementation(libs.bundles.paging)
 
 
     implementation(libs.androidx.core.ktx)

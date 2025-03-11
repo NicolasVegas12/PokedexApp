@@ -35,8 +35,7 @@ fun LoadingDialogComponent(
             dismissOnBackPress = false,
             dismissOnClickOutside = false
         ),
-
-        ) {
+    ) {
         Box(
             modifier = Modifier
                 .clip(
