@@ -1,5 +1,8 @@
 package com.nvegas.data.mappers
 
+import com.nvegas.data.database.entity.PokemonAbilityEntity
+import com.nvegas.data.database.entity.PokemonEntity
+import com.nvegas.data.database.entity.PokemonMoveEntity
 import com.nvegas.data.network.dto.response.detail.PokemonAbilityResponse
 import com.nvegas.data.network.dto.response.detail.PokemonDetailResponse
 import com.nvegas.data.network.dto.response.detail.PokemonMoveResponse
@@ -62,3 +65,69 @@ fun PokemonMoveResponse.toDomain(): PokemonMoveModel {
 
     )
 }
+
+fun PokedexListResultModel.toDatabase(): PokemonEntity {
+    val pokemon = PokemonEntity(
+        pokemonId = id,
+        name = name,
+        url = url,
+        height = detail?.height ?: 0,
+        weight = detail?.weight ?: 0,
+        defaultImage = detail?.sprites?.frontDefault ?: "",
+        artWorkImage = detail?.sprites?.artWork ?: ""
+    )
+
+
+
+    return pokemon
+}
+
+fun PokedexListResultModel.toAbilityDatabase(): List<PokemonAbilityEntity> {
+    val abilities: List<PokemonAbilityEntity> = detail?.abilities?.map {
+        PokemonAbilityEntity(
+            abilityId = it.id,
+            name = it.name,
+            isHidden = it.isHidden,
+            slot = it.slot
+        )
+    } ?: emptyList()
+    return abilities
+}
+
+fun PokedexListResultModel.toMoveDatabase(): List<PokemonMoveEntity> {
+    val moves = detail?.moves?.map {
+        PokemonMoveEntity(
+            moveId = it.id,
+            name = it.name
+        )
+    } ?: emptyList()
+    return moves
+}
+
+fun PokemonEntity.toDomain() = PokedexListResultModel(
+    id = pokemonId,
+    name = name,
+    url = url,
+    detail = PokemonDetailModel(
+        id = pokemonId,
+        name = name,
+        height = height,
+        weight = weight,
+        sprites = PokemonSpritesModel(
+            frontDefault = defaultImage,
+            artWork = artWorkImage
+
+        ),
+        moves = emptyList(),
+        abilities = emptyList()
+    )
+)
+
+fun PokemonAbilityEntity.toDomain() = PokemonAbilityModel(
+    id = abilityId,
+    name = name, isHidden = isHidden, slot = slot
+)
+fun PokemonMoveEntity.toDomain() = PokemonMoveModel(
+    id = moveId,
+    name = name
+)

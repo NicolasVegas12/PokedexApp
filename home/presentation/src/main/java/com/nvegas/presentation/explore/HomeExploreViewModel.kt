@@ -1,5 +1,7 @@
 package com.nvegas.presentation.explore
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -19,8 +21,10 @@ class HomeExploreViewModel @Inject constructor(
 ) : ViewModel() {
 
     var pokedex: Flow<PagingData<PokedexListResultModel>>? = null
+    private val _searchQuery = mutableStateOf("")
+    val searchQuery:State<String> = _searchQuery
 
-    fun init() {
+     init {
         getPokedex()
     }
 
@@ -31,6 +35,9 @@ class HomeExploreViewModel @Inject constructor(
                 PokedexPagingSource(getPokedexUseCase)
             }
         ).flow.cachedIn(viewModelScope)
+    }
+    fun setSearchQuery(value:String){
+        _searchQuery.value = value
     }
 
 }

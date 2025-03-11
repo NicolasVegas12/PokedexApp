@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +29,7 @@ import com.nvegas.domain.models.list.PokedexListResultModel
 @Composable
 fun PokemonListItem(
     item: PokedexListResultModel,
+    onCLick:()->Unit
 ) {
     Log.d("PokemonListItem", "Item: $item")
     Box(
@@ -35,6 +37,7 @@ fun PokemonListItem(
             .clip(RoundedCornerShape(20.dp))
             .border(1.dp, MaterialTheme.colorScheme.onBackground, shape = RoundedCornerShape(20.dp))
             .background(MaterialTheme.colorScheme.surfaceContainerLowest)
+            .clickable { onCLick() }
     ) {
         Row(
             Modifier
@@ -66,6 +69,6 @@ private fun PreviewPokemonListItem() {
             PokedexListResultModel(
                 name = "Bulbasaur"
             )
-        )
+        ){}
     }
 }

@@ -29,6 +29,9 @@ dependencies {
     implementation(libs.android.data.store)
     implementation(libs.bundles.protobuf)
 
+    implementation(libs.bundles.room)
+    ksp(libs.androidx.room.compiler)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

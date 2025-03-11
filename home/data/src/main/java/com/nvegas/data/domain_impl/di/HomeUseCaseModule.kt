@@ -4,6 +4,7 @@ import com.nvegas.common.utils.IODispatcher
 import com.nvegas.data.domain_impl.use_case.GetPokedexListUseCaseImpl
 import com.nvegas.data.domain_impl.use_case.GetPokemonDetailListUseCaseImpl
 import com.nvegas.data.repository.PokedexRepository
+import com.nvegas.data.repository.app.AppRepository
 import com.nvegas.domain.usecases.GetPokedexListUseCase
 import com.nvegas.domain.usecases.GetPokemonDetailListUseCase
 import dagger.Module
@@ -20,8 +21,9 @@ object HomeUseCaseModule {
     @Singleton
     fun provideGetPokedexUseCase(
         repository: PokedexRepository,
+        appRepository: AppRepository,
         @IODispatcher dispatcher: CoroutineDispatcher
-    ): GetPokedexListUseCase = GetPokedexListUseCaseImpl(repository, dispatcher)
+    ): GetPokedexListUseCase = GetPokedexListUseCaseImpl(repository,appRepository, dispatcher)
 
     @Provides
     @Singleton

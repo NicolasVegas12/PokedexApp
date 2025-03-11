@@ -1,7 +1,7 @@
 package com.nvegas.presentation
 
 
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -22,10 +22,8 @@ fun NavGraphBuilder.homeGraph() {
         composable<HomeDestination.HomePrincipalRoute> {
             val viewModel = hiltViewModel<HomeExploreViewModel>()
             val pokedexMedia = viewModel.pokedex?.collectAsLazyPagingItems()
-            LaunchedEffect(Unit) {
-                viewModel.init()
-            }
-            HomeExploreScreen(pokedexMedia)
+            val searchQuery by viewModel.searchQuery
+            HomeExploreScreen(pokedexMedia, searchQuery, viewModel::setSearchQuery)
         }
 
         composable<HomeDestination.HomePokemonTeamRoute> {
