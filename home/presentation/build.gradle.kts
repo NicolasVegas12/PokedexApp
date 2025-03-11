@@ -17,7 +17,10 @@ android {
 
 dependencies {
     implementation(project(":common:core"))
+    implementation(project(":common:domain"))
+
     implementation(project(":home:domain"))
+
 
     implementation(libs.bundles.android.compose.core)
     implementation(libs.bundles.android.compose.extensions)

@@ -23,7 +23,8 @@ fun NavGraphBuilder.homeGraph() {
             val viewModel = hiltViewModel<HomeExploreViewModel>()
             val pokedexMedia = viewModel.pokedex?.collectAsLazyPagingItems()
             val searchQuery by viewModel.searchQuery
-            HomeExploreScreen(pokedexMedia, searchQuery, viewModel::setSearchQuery)
+            val connectivity by viewModel.connectivity
+            HomeExploreScreen(pokedexMedia, searchQuery, connectivity, viewModel::setSearchQuery)
         }
 
         composable<HomeDestination.HomePokemonTeamRoute> {

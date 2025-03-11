@@ -4,7 +4,7 @@ import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,6 +35,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.nvegas.core.theme.AppTheme
 import com.nvegas.core.ui.text.TextComponent
 import com.nvegas.domain.models.list.PokedexListResultModel
+import com.nvegas.presentation.explore.components.items.NoConnectivityItem
 import com.nvegas.presentation.explore.components.items.PokedexLoadingItem
 import com.nvegas.presentation.explore.components.items.PokemonListItem
 import com.nvegas.presentation.explore.frame.PokemonDetailDialog
@@ -45,6 +46,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 fun HomeExploreScreen(
     pokedex: LazyPagingItems<PokedexListResultModel>?,
     searchQuery: String,
+    connectivity: Boolean,
     setSeachQuery: (String) -> Unit
 ) {
     var selectedItem: PokedexListResultModel? by remember { mutableStateOf(null) }
@@ -53,8 +55,11 @@ fun HomeExploreScreen(
     val detailState = rememberModalBottomSheetState()
     var isSearchActive by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize()) {
 
+        AnimatedVisibility(!connectivity, modifier = Modifier.padding(16.dp)) {
+            NoConnectivityItem()
+        }
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.padding(16.dp)
@@ -145,6 +150,10 @@ private fun PreviewHomeExploreScreen() {
     val data = emptyList<PokedexListResultModel>()
     val flow = MutableStateFlow(PagingData.from(data))
     AppTheme {
-        HomeExploreScreen(flow.collectAsLazyPagingItems(), "", {})
+        HomeExploreScreen(
+            pokedex = flow.collectAsLazyPagingItems(),
+            searchQuery = "",
+            connectivity = true,
+            setSeachQuery = {})
     }
 }

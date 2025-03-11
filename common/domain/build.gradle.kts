@@ -5,33 +5,23 @@ plugins {
     id(libs.plugins.dagger.hilt.get().pluginId)
     id(libs.plugins.androidx.ksp.get().pluginId)
     id("org.sonarqube")
-    id("kotlin-parcelize")
     `android-config`
 }
-
 android {
-    namespace = "com.nvegas.data"
-    hilt {
-        enableAggregatingTask = false
-    }
-}
+    namespace = "com.nvegas.domain"
 
+
+}
 dependencies {
 
-    implementation(project(":common:domain"))
+
+    implementation(project(":common:core"))
     implementation(libs.bundles.dagger.hilt.compose)
 
     ksp(libs.bundles.dagger.hilt.compiler)
 
     implementation(libs.bundles.serialization)
 
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.android.data.store)
-    implementation(libs.bundles.protobuf)
-
-    implementation(libs.bundles.room)
-    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
